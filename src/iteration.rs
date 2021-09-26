@@ -37,8 +37,8 @@ impl Iteration {
         result
     }
     /// Creates a new named variable associated with the iterative context.
-           pub fn variable<Tuple: Ord + 'static>(&mut self, name: &str) -> Variable<Tuple> {
-           let variable = Variable::new(name);
+    pub fn variable<Tuple: Ord + 'static>(&mut self, name: &str) -> Variable<Tuple> {
+        let variable = Variable::new(name);
         self.variables.push(Box::new(variable.clone()));
         variable
     }
