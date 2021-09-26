@@ -1,8 +1,7 @@
 use std::iter::FromIterator;
 
 use crate::{
-    join,
-    merge,
+    join, merge,
     treefrog::{self, Leapers},
 };
 

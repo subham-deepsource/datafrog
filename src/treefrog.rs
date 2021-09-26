@@ -520,7 +520,7 @@ pub(crate) mod extend_anti {
                     let start = binary_search(&self.relation.elements, |x| &x.0 < &key);
                     let slice1 = &self.relation[start..];
                     let slice2 = gallop(slice1, |x| &x.0 <= &key);
-                    let range = start..self.relation.len()-slice2.len();
+                    let range = start..self.relation.len() - slice2.len();
 
                     self.old_key = Some((key, range.clone()));
 
@@ -594,7 +594,11 @@ pub(crate) mod filter_with {
 
             let is_present = self.relation.binary_search(&key_val).is_ok();
             self.old_key_val = Some((key_val, is_present));
-            if is_present { usize::MAX } else { 0 }
+            if is_present {
+                usize::MAX
+            } else {
+                0
+            }
         }
         fn propose(&mut self, _prefix: &Tuple, _values: &mut Vec<&'leap Val2>) {
             panic!("FilterWith::propose(): variable apparently unbound.");
@@ -687,7 +691,11 @@ pub(crate) mod filter_anti {
 
             let is_present = self.relation.binary_search(&key_val).is_ok();
             self.old_key_val = Some((key_val, is_present));
-            if is_present { 0 } else { usize::MAX }
+            if is_present {
+                0
+            } else {
+                usize::MAX
+            }
         }
         fn propose(&mut self, _prefix: &Tuple, _values: &mut Vec<&'leap Val2>) {
             panic!("FilterAnti::propose(): variable apparently unbound.");
